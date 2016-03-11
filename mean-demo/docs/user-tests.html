@@ -24,6 +24,11 @@
               </a>
             
               
+              <a class="source" href="pedido.html">
+                pedido.js
+              </a>
+            
+              
               <a class="source" href="sample.html">
                 sample.js
               </a>
@@ -54,6 +59,11 @@
               </a>
             
               
+              <a class="source" href="pedidos-rest-tests.html">
+                pedidos-rest-tests.js
+              </a>
+            
+              
               <a class="source" href="samples-rest-tests.html">
                 samples-rest-tests.js
               </a>
@@ -71,6 +81,11 @@
               
               <a class="source" href="admins-tests.html">
                 admins-tests.js
+              </a>
+            
+              
+              <a class="source" href="pedido-tests.html">
+                pedido-tests.js
               </a>
             
               
@@ -217,6 +232,19 @@
             <div class="content"><div class='highlight'><pre>        it(<span class="hljs-string">'add a user'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
             user = <span class="hljs-keyword">new</span> User({ name: <span class="hljs-string">'user'</span>+<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-number">1</span>)});
             user.save(done);
+        });
+
+        it(<span class="hljs-string">'authenticate user'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">done</span>)</span>{
+            user = <span class="hljs-keyword">new</span> User({ 
+                email:<span class="hljs-string">'user@user.com'</span>, 
+                password: <span class="hljs-string">'123456'</span>,
+                name: <span class="hljs-string">'user'</span>+<span class="hljs-built_in">Math</span>.floor((<span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span>) + <span class="hljs-number">1</span>)});
+            user.save(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">err, doc</span>)</span>{
+                assert.ok(doc.authenticate(<span class="hljs-string">"123456"</span>), <span class="hljs-string">"Authenticatoin should return true"</span>);
+                assert.ok(!doc.authenticate(<span class="hljs-string">"inconrrect"</span>), <span class="hljs-string">"Authentication should return false"</span>);
+                user = doc;
+                done();
+            });
         });
 
     });

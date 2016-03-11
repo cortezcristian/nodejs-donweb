@@ -140,7 +140,25 @@ angular
           }
         }
       })
+      .when('/crud/pedido', {
+        templateUrl: '/scripts/admin/views/pedido.html',
+        controller: 'PedidoCtrl'
+      })
+      .when('/crud/pedido-new', {
+        templateUrl: '/forms/pedido/create',
+        controller: 'PedidoNewCtrl'
+      })
+      .when('/crud/pedido-edit/:id', {
+        templateUrl: '/forms/pedido/create',
+        controller: 'PedidoEditCtrl',
+        resolve: {
+          pedido: function(Restangular, $route){
+            return Restangular.one('pedidos', $route.current.params.id).get();
+          }
+        }
+      })
       .otherwise({
+
 
         redirectTo: '/'
       });

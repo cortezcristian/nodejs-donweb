@@ -3,20 +3,20 @@
 
 // Modules Dependencies:
 //  - Mongoose (http://mongoosejs.com/docs/guide.html)
-//  
-var mongoose = require('mongoose'), 
+//
+var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     crypto = require('crypto');
 
 var adminsSchema = new Schema({
-    name          : String, 
-	email         : String,      
-	password      : String,      
+    name          : String,
+	email         : String,
+	password      : String,
     role          : {type: String, default: "admin"},
-	created       : Date         
+	created       : Date
 });
 
-// ### Hooks 
+// ### Hooks
 // #### Pre-Save
 adminsSchema.pre("save", function(next) {
     if(this.isModified('password'))
@@ -30,6 +30,7 @@ adminsSchema.pre("save", function(next) {
 
 // ### Method:
 // #### Authenticate
+// *Debe auth al usuario*
 // Checks password match
 adminsSchema.method('authenticate', function(password) {
     return crypto.createHash('md5').update(password).digest("hex") === this.password;

@@ -24,6 +24,11 @@
               </a>
             
               
+              <a class="source" href="pedido.html">
+                pedido.js
+              </a>
+            
+              
               <a class="source" href="sample.html">
                 sample.js
               </a>
@@ -54,6 +59,11 @@
               </a>
             
               
+              <a class="source" href="pedidos-rest-tests.html">
+                pedidos-rest-tests.js
+              </a>
+            
+              
               <a class="source" href="samples-rest-tests.html">
                 samples-rest-tests.js
               </a>
@@ -71,6 +81,11 @@
               
               <a class="source" href="admins-tests.html">
                 admins-tests.js
+              </a>
+            
+              
+              <a class="source" href="pedido-tests.html">
+                pedido-tests.js
               </a>
             
               
@@ -135,16 +150,16 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>), 
+            <div class="content"><div class='highlight'><pre><span class="hljs-keyword">var</span> mongoose = <span class="hljs-built_in">require</span>(<span class="hljs-string">'mongoose'</span>),
     Schema = mongoose.Schema,
     crypto = <span class="hljs-built_in">require</span>(<span class="hljs-string">'crypto'</span>);
 
 <span class="hljs-keyword">var</span> adminsSchema = <span class="hljs-keyword">new</span> Schema({
-    name          : <span class="hljs-built_in">String</span>, 
-	email         : <span class="hljs-built_in">String</span>,      
-	password      : <span class="hljs-built_in">String</span>,      
+    name          : <span class="hljs-built_in">String</span>,
+	email         : <span class="hljs-built_in">String</span>,
+	password      : <span class="hljs-built_in">String</span>,
     role          : {type: <span class="hljs-built_in">String</span>, <span class="hljs-keyword">default</span>: <span class="hljs-string">"admin"</span>},
-	created       : <span class="hljs-built_in">Date</span>         
+	created       : <span class="hljs-built_in">Date</span>
 });</pre></div></div>
             
         </li>
@@ -182,7 +197,8 @@
               </div>
               <h3 id="method-">Method:</h3>
 <h4 id="authenticate">Authenticate</h4>
-<p>Checks password match</p>
+<p><em>Debe auth al usuario</em>
+Checks password match</p>
 
             </div>
             
